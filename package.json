@@ -1,0 +1,25 @@
+{
+  "name": "puppeteer-download-all-imgs",
+  "version": "0.0.1",
+  "description": "download all imgs fast!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhuang813/puppeteer-download-all-imgs.git"
+  },
+  "keywords": [
+    "puppeteer"
+  ],
+  "author": "royhuang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royhuang813/puppeteer-download-all-imgs/issues"
+  },
+  "homepage": "https://github.com/royhuang813/puppeteer-download-all-imgs#readme",
+  "dependencies": {
+    "puppeteer": "^7.1.0"
+  }
+}
