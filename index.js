@@ -15,24 +15,24 @@ let devs = [{
       height: 700
     },
   },
-  {
-    defaultViewport: {
-      width: 768,
-      height: 1024
-    },
-  },
-  {
-    defaultViewport: {
-      width: 375,
-      height: 812
-    },
-  },
-  {
-    defaultViewport: {
-      width: 320,
-      height: 568
-    },
-  }
+  // {
+  //   defaultViewport: {
+  //     width: 768,
+  //     height: 1024
+  //   },
+  // },
+  // {
+  //   defaultViewport: {
+  //     width: 375,
+  //     height: 812
+  //   },
+  // },
+  // {
+  //   defaultViewport: {
+  //     width: 320,
+  //     height: 568
+  //   },
+  // }
 ]
 
 async function run(options) {
@@ -57,25 +57,25 @@ async function run(options) {
   async function downloadImg(url, num) {
     // console.log(url)
     let fileName = url.substring(url.indexOf('com/') + 4)
-    if (!/[^A-Za-z0-9_\-\=]/.test(fileName)) {
-      let proxy = process.env.http_proxy || 'http://127.0.0.1:1086';
-      await superagent
-        .get(url)
-        // .set({
-        //   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'
-        // }, {
-        //   'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-        // })
-        .proxy(proxy)
-        .end((err, response) => {
-          if (err) {
-            // console.log(`${num}下载错误 - (${url})`)
-          } else {
-            // console.log(`${num}下载成功 - `, (response.body))
-            saveImg(fileName, response.body)
-          }
-        })
-    }
+    // if (!/[^A-Za-z0-9_\-\=]/.test(fileName)) {
+    let proxy = process.env.http_proxy || 'http://127.0.0.1:1087';
+    await superagent
+      .get(url)
+      // .set({
+      //   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'
+      // }, {
+      //   'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+      // })
+      .proxy(proxy)
+      .end((err, response) => {
+        if (err) {
+          // console.log(`${num}下载错误 - (${url})`)
+        } else {
+          // console.log(`${num}下载成功 - `, (response.body))
+          saveImg(fileName, response.body)
+        }
+      })
+    // }
   }
 
   async function saveImg(fileName, data) {
@@ -84,7 +84,14 @@ async function run(options) {
     })
   }
 
-  await page.goto('http://www.imcreator.com/');
+  await page.goto('file:///Users/roy/Desktop/GV-2.10/contact-us.html');
+
+  async function sleep(time) {
+    return new Promise(resolve => {
+      setTimeout(resolve, time)
+    })
+  }
+  await sleep(10000)
   await browser.close();
 }
 
